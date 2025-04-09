@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center; 
+            font-family: Arial, sans-serif;
+        }
+        .error-container {
+            margin-top: 10vh;
+        }
+        h1 {
+            font-size: 100px;
+            animation: glitch 1.5s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, 2px); }
+            100% { transform: translate(0); }
+        }
+        .error-button a {
+            background: #ff4757;
+            padding: 12px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .error-button a:hover {
+            background: #e84148;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="error-container">
+        <h1 class="glitch">404</h1>
+        <h2>Oops! PAGE NOT FOUND</h2>
+        <p>Sorry, the page you are looking for does not exist, has been moved, or is temporarily unavailable.
+        </p>
+        <div class="error-button">
+            <a href="index.html">Back to Home</a>
+        </div>
+        <p id="redirect-message"></p>
+    </div>
+    
+    <script>
+        // Initialize Particle.js
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100 },
+                size: { value: 3 },
+                move: { speed: 2 }
+            }
+        });
+        
+        // Auto Redirect After 10 Seconds
+        let countdown = 50;
+        const redirectMsg = document.getElementById("redirect-message");
+        redirectMsg.textContent = `Redirecting in ${countdown} seconds...`;
+        const interval = setInterval(() => {
+            countdown--;
+            redirectMsg.textContent = `Redirecting in ${countdown} seconds...`;
+            if (countdown === 0) {
+                clearInterval(interval);
+                window.location.href = "index.html";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

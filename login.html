@@ -1,0 +1,418 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <div id="head"></div>
+</head>
+
+<body>
+    <div id="header"></div>
+    <!-- Begin Li's Breadcrumb Area -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Login</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Li's Breadcrumb Area End Here -->
+    <!-- Begin Login Content Area -->
+    <div class="page-section mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                    <!-- Login Form s--> 
+                    <form action="#" id="loginForm">
+                        <div class="login-form">
+                            <h4 class="login-title">Log In To Your Account</h4>
+                            <div class="row">
+                                <div class="col-md-12 col-12 mb-20">
+                                    <label>Email Address<span class="red">*</span></label>
+                                    <input class="mb-0" id="email" name="email" type="email" placeholder="Email Address">
+                                    <span class="error" id="emailError"></span>
+                                </div>
+                                <div class="col-12 mb-20">
+                                    <label>Password<span class="red">*</span></label>
+                                    <input class="mb-0" type="password" id="password" name="password" placeholder="Password">
+                                    <span class="error" id="passwordError"></span>
+                                    
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
+                                        <input type="checkbox" id="remember_me">
+                                        <label for="remember_me">Remember me</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
+                                    <a href="password.html"> Forgotten password?</a>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="register-button mt-0">Login</button>
+                                </div>
+                                <div id="formResponse" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 d-flex align-items-center justify-content-center">
+                    <div id="animationContainer" style="width: 100%; height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Content Area End Here -->
+    <!-- Begin Footer Area -->
+    <div class="footer">
+        <!-- Begin Footer Static Top Area -->
+        <div class="footer-static-top">
+            <div class="container">
+                <!-- Begin Footer Shipping Area -->
+                <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                    <div class="row">
+                        <!-- Begin Li's Shipping Inner Box Area -->
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="images/shipping-icon/1.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>Free Delivery</h2>
+                                    <p>And free returns. See checkout for delivery dates.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Li's Shipping Inner Box Area End Here -->
+                        <!-- Begin Li's Shipping Inner Box Area -->
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="images/shipping-icon/2.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>Safe Payment</h2>
+                                    <p>Pay with the world's most popular and secure payment methods.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Li's Shipping Inner Box Area End Here -->
+                        <!-- Begin Li's Shipping Inner Box Area -->
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="images/shipping-icon/3.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>Shop with Confidence</h2>
+                                    <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Li's Shipping Inner Box Area End Here -->
+                        <!-- Begin Li's Shipping Inner Box Area -->
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="images/shipping-icon/4.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>24/7 Help Center</h2>
+                                    <p>Have a question? Call a Specialist or chat online.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Li's Shipping Inner Box Area End Here -->
+                    </div>
+                </div>
+                <!-- Footer Shipping Area End Here -->
+            </div>
+        </div>
+        <!-- Footer Static Top Area End Here -->
+        <div id="footer"></div>
+    </div>
+    <!-- Footer Area End Here -->
+
+    <!-- Body Wrapper End Here -->
+    <!-- jQuery-V1.12.4 -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/vendor/popper.min.js"></script>
+    <!-- Bootstrap V4.1.3 Fremwork js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Ajax Mail js -->
+    <script src="js/ajax-mail.js"></script>
+    <!-- Meanmenu js -->
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <!-- Wow.min js -->
+    <script src="js/wow.min.js"></script>
+    <!-- Slick Carousel js -->
+    <script src="js/slick.min.js"></script>
+    <!-- Owl Carousel-2 js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- Magnific popup js -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Isotope js -->
+    <script src="js/isotope.pkgd.min.js"></script>
+    <!-- Imagesloaded js -->
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <!-- Mixitup js -->
+    <script src="js/jquery.mixitup.min.js"></script>
+    <!-- Countdown -->
+    <script src="js/jquery.countdown.min.js"></script>
+    <!-- Counterup -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Barrating -->
+    <script src="js/jquery.barrating.min.js"></script>
+    <!-- Jquery-ui -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Venobox -->
+    <script src="js/venobox.min.js"></script>
+    <!-- Nice Select js -->
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- ScrollUp js -->
+    <script src="js/scrollUp.min.js"></script>
+    <!-- Main/Activator js -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load head content 
+            fetch('head.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Head file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('head').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading head:', error));
+
+            // Load header content
+            fetch('header.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Header file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+
+                    // Attach event listeners after the header is loaded
+                    attachEventListeners();
+                    setupHeaderDropdowns(); // Add this line to set up header dropdowns
+                })
+                .catch(error => console.error('Error loading header:', error));
+
+            // Load footer content
+            fetch('footer.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Footer file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Change href dynamically for .redirect links
+            document.querySelectorAll(".redirect").forEach(link => {
+                link.setAttribute("href", "maintenance.html");
+
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.href = "maintenance.html";
+                });
+            });
+
+            // Change href dynamically for .soon links
+            document.querySelectorAll(".soon").forEach(link => {
+                link.setAttribute("href", "coming-soon.html");
+
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.href = "coming-soon.html";
+                });
+            });
+        });
+
+        function setupHeaderDropdowns() {
+            // Function to handle setting dropdown
+            const settingTrigger = document.querySelector('.ht-setting-trigger');
+            const settingDropdown = document.querySelector('.setting.ht-setting');
+
+            if (settingTrigger && settingDropdown) {
+                settingTrigger.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent event bubbling
+                    settingDropdown.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!settingDropdown.contains(event.target)) {
+                        settingDropdown.classList.remove('active');
+                    }
+                });
+            }
+
+            // Function to handle currency dropdown
+            const currencyTrigger = document.querySelector('.ht-currency-trigger');
+            const currencyDropdown = document.querySelector('.currency.ht-currency');
+
+            if (currencyTrigger && currencyDropdown) {
+                currencyTrigger.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent event bubbling
+                    currencyDropdown.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!currencyDropdown.contains(event.target)) {
+                        currencyDropdown.classList.remove('active');
+                    }
+                });
+            }
+
+            // Function to handle language dropdown
+            const languageTrigger = document.querySelector('.ht-language-trigger');
+            const languageDropdown = document.querySelector('.language.ht-language');
+
+            if (languageTrigger && languageDropdown) {
+                languageTrigger.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent event bubbling
+                    languageDropdown.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!languageDropdown.contains(event.target)) {
+                        languageDropdown.classList.remove('active');
+                    }
+                });
+            }
+        }
+    </script>
+    <script>
+        const animationContainer = document.getElementById('animationContainer');
+        if (animationContainer) {
+            lottie.loadAnimation({
+                container: animationContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_06a6pf9i.json' // Replace with your animation JSON URL
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("loginForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Clear previous errors
+                document.getElementById("emailError").textContent = "";
+                document.getElementById("passwordError").textContent = "";
+                document.getElementById("formResponse").style.display = "none";
+
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                let isValid = true;
+                if (!email || !email.includes("@")) {
+                    document.getElementById("emailError").textContent = "Please enter a valid email.";
+                    isValid = false;
+                }
+                if (!password || password.length < 6) {
+                    document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    const loginData = { email, password };
+
+                    fetch("http://127.0.0.1:8000/login/", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(loginData),
+                    })
+                    .then(response => response.json().then(data => ({ status: response.status, body: data }))) // Handle JSON parsing safely
+                    .then(result => {
+                        console.log("Response Data:", result);
+
+                        if (result.status === 200) {
+                            document.getElementById("formResponse").style.display = "block";
+                            document.getElementById("formResponse").textContent = "Login successful! Redirecting...";
+
+                            // Store JWT tokens
+                            localStorage.setItem("access_token", result.body.access_token);
+                            localStorage.setItem("refresh_token", result.body.refresh_token);
+
+                            // Store user details
+                            localStorage.setItem("user", JSON.stringify(result.body.user));
+
+                            // Redirect after 2 seconds
+                            setTimeout(() => {
+                                window.location.href = "http://127.0.0.1:5501/my-account.html"; // Change if needed
+                            }, 2000);
+                        } else {
+                            document.getElementById("formResponse").style.display = "block";
+                            document.getElementById("formResponse").textContent = "Login failed: " + (result.body.msg || "Unknown error");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        document.getElementById("formResponse").style.display = "block";
+                        document.getElementById("formResponse").textContent = "An error occurred. Please try again.";
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- <script>
+
+        // auth.js
+
+        // Login function
+        const login = async (email, password) => {
+            try {
+                const response = await fetch('/login/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Store access token in localStorage
+                    localStorage.setItem('access_token', data.access_token);
+
+                    // Optionally, store refresh token if needed
+                    localStorage.setItem('refresh_token', data.refresh_token);
+
+                    // Redirect user to dashboard
+                    window.location.href = '/dashboard';
+                } else {
+                    alert(data.msg);  // Show error message if login failed
+                }
+            } catch (error) {
+                console.error("Error during login:", error);
+            }
+        };
+
+        // Event listener for the login form submission
+        document.getElementById('login-form')?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            login(email, password);
+        });
+
+    </script> -->
+</body>
+</html>

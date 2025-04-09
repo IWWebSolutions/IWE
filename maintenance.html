@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      
+      .maintenance-container {
+        text-align: center; 
+        max-width: 600px;
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+      
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+      
+      .countdown {
+        margin-top: 30px;
+      }
+      
+      #timer {
+        font-size: 2rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      /* Animation Container */
+      .animation-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 30px;
+      }
+      
+      /* Gear Animations */
+      .gear {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border-radius: 50%;
+        animation: spin 4s linear infinite;
+      }
+      
+      .gear::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, transparent 50%, #fff 50%);
+        border-radius: 50%;
+      }
+      
+      .gear-one {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .gear-two {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        animation-direction: reverse;
+      }
+      
+      .gear-three {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+      
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+  </style>
+</head>
+<body>
+  <div class="maintenance-container">
+    <div class="animation-container">
+      <div class="gear gear-one"></div>
+      <div class="gear gear-two"></div>
+      <div class="gear gear-three"></div>
+    </div>
+    <h1>We'll Be Back Soon!</h1>
+    <p>Our website is currently undergoing scheduled maintenance. We apologize for the inconvenience and appreciate your patience.</p>
+    <div class="countdown">
+      <p>Estimated time remaining:</p>
+      <div id="timer">
+        <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Set the countdown time (in seconds)
+    const countdownTime = 172800; // 48 hours
+
+    let timeLeft = countdownTime;
+
+    function updateTimer() {
+      const hours = Math.floor(timeLeft / 3600);
+      const minutes = Math.floor((timeLeft % 3600) / 60);
+      const seconds = timeLeft % 60;
+
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+      if (timeLeft > 0) {
+        timeLeft--;
+      } else {
+        clearInterval(timerInterval);
+        document.getElementById('timer').textContent = "Maintenance Complete!";
+      }
+    }
+
+    // Update the timer every second
+    const timerInterval = setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>

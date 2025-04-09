@@ -1,0 +1,26 @@
+{
+  "connector": {
+    "name": "jsdom",
+    "options": {
+      "pattern": ["**/*.html","!**/*.js"]
+    }
+  },
+  "extends": ["development"],
+  "hints": {
+    "compat-api/css": "warning",
+    "accessibility/axe": [
+      "error",
+      {
+        "color-contrast": true
+      }
+    ],
+    "performance": "off",
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ]
+  },
+  "formatters": ["html"]
+}

@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <div id="head"></div>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .breadcrumb-area {
+            background-color: #ffffff;
+            padding: 20px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .checkout-area {
+            padding: 40px 0;
+        }
+
+        .your-order {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-height: 450px;
+        }
+
+        .your-order img {
+            max-width: 100%;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .your-order-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .your-order-table th,
+        .your-order-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .payment-method {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            border-color: #007bff;
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+        }
+
+        .payment-option i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #007bff;
+        }
+
+        .btn-pay {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-pay:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Checkout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-area pt-60 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-12">
+                    <div class="your-order">
+                        <h3>Membership Details</h3>
+                        <center>
+                            <img src="images/product/large-size/gold.png" alt="Membership Plan" style="align-items: center;">
+                        </center> 
+                        <div class="your-order-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Gold Membership <strong class="product-quantity">× 1</strong></td>
+                                        <td>Rs. 24000.00</td>
+                                    </tr>
+                                </tbody> 
+                                <tbody>
+                                    <tr>
+                                        <td>18% GST</td>
+                                        <td>Rs. 4320.00</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="order-total">
+                                        <th>Order Total</th>
+                                        <td><strong><span class="amount">Rs. 28320.00</span></strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="payment-method">
+                        <h3>Payment Options</h3>
+                        <div class="payment-option" onclick="selectPayment('bank')">
+                            <i class="fas fa-university"></i>
+                            <h5>Direct Bank Transfer</h5>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('qr')">
+                            <i class="fas fa-qrcode"></i>
+                            <h5>Scan QR</h5>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('paypal')">
+                            <i class="fab fa-paypal"></i>
+                            <h5>PayPal</h5>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('upi')">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h5>UPI</h5>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('card')">
+                            <i class="fas fa-credit-card"></i>
+                            <h5>Credit/Debit Card</h5>
+                        </div>
+                        <button class="btn-pay" onclick="processPayment()">Proceed to Payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ['head', 'header', 'footer'].forEach(section => {
+                fetch(`${section}.html`)
+                    .then(res => res.ok ? res.text() : '')
+                    .then(data => document.getElementById(section).innerHTML = data)
+                    .catch(console.error);
+            });
+        });
+
+        let selectedPaymentMethod = null;
+
+        function selectPayment(method) {
+            selectedPaymentMethod = method;
+            document.querySelectorAll('.payment-option').forEach(option => option.style.borderColor = '#e9ecef');
+            event.currentTarget.style.borderColor = '#007bff';
+        }
+
+        function processPayment() {
+            if (!selectedPaymentMethod) {
+                alert('Please select a payment method.');
+                return;
+            }
+            alert(`Proceeding with ${selectedPaymentMethod} payment...`);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Change href dynamically for .redirect links
+            document.querySelectorAll(".redirect").forEach(link => {
+                link.setAttribute("href", "maintenance.html");
+
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.href = "maintenance.html";
+                });
+            });
+
+            // Change href dynamically for .soon links
+            document.querySelectorAll(".soon").forEach(link => {
+                link.setAttribute("href", "coming-soon.html");
+
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.href = "coming-soon.html";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

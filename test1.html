@@ -1,0 +1,285 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <title>Testimonials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <div id="head"></div>
+    <style>
+        #review-popup {
+            background-color: rgba(0, 0, 0, 0.75); /* Dark background overlay */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+
+        #review-popup.active {
+            display: flex; /* Show when active */
+        }
+
+        #review-popup > div {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            width: 100%;
+            max-width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Testimonials Section -->
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <h1 class="text-3xl font-medium title-font text-gray-900 mb-12 text-center">Testimonials</h1>
+            <div id="reviews-container" class="flex flex-wrap -m-4">
+                <!-- Reviews will be inserted here dynamically -->
+            </div>
+            <!-- Add a "Give a Review" Button -->
+            <div class="text-center mt-8">
+                <button id="give-review-btn" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                    Give a Review
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pop-up Form for Review -->
+    <div id="review-popup" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white p-8 rounded-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Submit Your Review</h2>
+            <form id="review-form">
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                </div>
+                <div class="mb-4">
+                    <label for="company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                    <input type="text" id="company" name="company" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div class="mb-4">
+                    <label for="review" class="block text-sm font-medium text-gray-700">Your Review</label>
+                    <textarea id="review" name="review" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></textarea>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" id="close-popup-btn" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 mr-2">
+                        Close
+                    </button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/vendor/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ajax-mail.js"></script>
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.barrating.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/venobox.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/scrollUp.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/category1.js"></script>
+    <script>
+        async function fetchReviews() {
+            try {
+                const response = await fetch('https://backend-8nv2.onrender.com/get-reviews');
+                if (!response.ok) throw new Error('Failed to fetch reviews');
+                
+                const reviews = await response.json();
+                const reviewsContainer = document.getElementById('reviews-container');
+                
+                if (reviews.length === 0) {
+                    reviewsContainer.innerHTML = getDefaultReview();
+                    return;
+                }
+                
+                reviewsContainer.innerHTML = reviews.map(review => `
+                    <div class="p-4 md:w-1/2 w-full">
+                        <div class="h-full bg-gray-100 p-8 rounded">
+                            <p class="leading-relaxed mb-6">${review.review}</p>
+                            <a class="inline-flex items-center">
+                                <img alt="testimonial" src="${review.profile_image || 'https://dummyimage.com/106x106'}" class="w-12 h-12 rounded-full object-cover">
+                                <span class="flex-grow flex flex-col pl-4">
+                                    <span class="title-font font-medium text-gray-900">${review.name}</span>
+                                    <span class="text-gray-500 text-sm">${review.position || 'Customer'}</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error fetching reviews:', error);
+                document.getElementById('reviews-container').innerHTML = getDefaultReview();
+            }
+        }
+
+        // The Default Comment Goes Here!!
+        function getDefaultReview() {
+            return `
+                <div class="p-4 md:w-1/2 w-full">
+                    <div class="h-full bg-gray-100 p-8 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 text-gray-400 mb-4" 
+                            viewBox="0 0 975.036 975.036">
+                            <path 
+                                d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 
+                                191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 
+                                24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 
+                                30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 
+                                94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 
+                                22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 
+                                93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
+                            </path>
+                        </svg>
+                        <p class="leading-relaxed mb-6">
+                            Default review content goes here.
+                        </p>
+                        <a class="inline-flex items-center">
+                            <img alt="testimonial" src="https://dummyimage.com/106x106" class="w-12 h-12 rounded-full object-cover">
+                            <span class="flex-grow flex flex-col pl-4">
+                                <span class="title-font font-medium text-gray-900">John Doe</span>
+                                <span class="text-gray-500 text-sm">Verified Customer</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/2 w-full">
+                    <div class="h-full bg-gray-100 p-8 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 text-gray-400 mb-4" 
+                            viewBox="0 0 975.036 975.036">
+                            <path 
+                                d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 
+                                191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 
+                                24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 
+                                30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 
+                                94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 
+                                22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 
+                                93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
+                            </path>
+                        </svg>
+                        <p class="leading-relaxed mb-6">
+                            Default review content goes here.
+                        </p>
+                        <a class="inline-flex items-center">
+                            <img alt="testimonial" src="https://dummyimage.com/106x106" class="w-12 h-12 rounded-full object-cover">
+                            <span class="flex-grow flex flex-col pl-4">
+                                <span class="title-font font-medium text-gray-900">John Doe</span>
+                                <span class="text-gray-500 text-sm">Verified Customer</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>`;
+        }
+
+        // Toggle Pop-up Visibility
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchReviews();
+
+            const reviewPopup = document.getElementById('review-popup');
+            const giveReviewBtn = document.getElementById('give-review-btn');
+            const closePopupBtn = document.getElementById('close-popup-btn');
+
+            giveReviewBtn.addEventListener('click', () => {
+                reviewPopup.classList.remove('hidden');
+                reviewPopup.classList.add('flex');
+            });
+
+            closePopupBtn.addEventListener('click', () => {
+                reviewPopup.classList.remove('flex');
+                reviewPopup.classList.add('hidden');
+            });
+
+            // Handle Form Submission
+            const reviewForm = document.getElementById('review-form');
+            reviewForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(reviewForm);
+                const reviewData = Object.fromEntries(formData.entries());
+                console.log('Review Data:', reviewData); // You can send this data to your backend
+                alert('Thank you for your review!');
+                reviewForm.reset();
+                reviewPopup.classList.remove('flex');
+                reviewPopup.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('give-review-btn').addEventListener('click', () => {
+            document.getElementById('review-popup').classList.add('active');
+        });
+
+        document.getElementById('close-popup-btn').addEventListener('click', () => {
+            document.getElementById('review-popup').classList.remove('active');
+        });
+
+        // Load Head, Header, and Footer
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load head content
+            fetch('head.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Head file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('head').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading head:', error));
+
+            // Load header content
+            fetch('header.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Header file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading header:', error));
+
+            // Load footer content
+            fetch('footer.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Footer file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
+    </script>
+</body>
+</html>

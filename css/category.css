@@ -1,0 +1,271 @@
+.container {
+  width: 100%;
+}
+  
+.title {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif, Garamond;
+}
+
+.popup { 
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Larger shadow */
+  padding: 20px;
+  width: 400px; /* Slightly wider */
+  max-width: 90%; /* Responsive width */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay */
+  backdrop-filter: blur(5px); /* Subtle blur effect */
+  z-index: 999;
+}
+
+.popup-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333; /* Modern dark gray */
+}
+
+.popup-header a {
+  color: #0a2351; /* Dark blue for linked headings */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.popup-header a:hover {
+  color: #007bff; /* Blue hover effect for linked headings */
+}
+
+.popup-close {
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.popup-close:hover {
+  color: #f00909; /* Attractive hover color */
+}
+
+#popup-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#popup-list li {
+  padding: 10px 15px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#popup-list li a {
+  color: #555; /* Lighter font color for list items */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#popup-list li:hover {
+  background-color: #0a2351; /* Highlight on hover */
+  color: white;
+  transform: translateX(5px); /* Subtle movement */
+}
+
+#popup-list li:hover a {
+  color: white; /* White text on hover */
+}
+
+#popup-list li {
+  padding: 10px;
+  margin: 5px 0;
+  background: linear-gradient(45deg, #f3f3f3, #eaeaea); /* Gradient background */
+  border-radius: 8px;
+  transition: transform 0.2s, background 0.3s;
+}
+
+#popup-list li:hover {
+  transform: scale(1.05); /* Pop-out effect */
+  background: linear-gradient(45deg, #5072A7, #0a2351); /* Highlighted gradient */
+  color: white;
+}
+  
+.cardo{
+  background-color:#ffffff;
+  border-radius: 10px;
+  width: 160px;
+  height: 270px;
+  box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 20px 10px;
+  transform: all .2s ease-in-out;
+}
+  
+.cardo:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-bottom: -5rem;
+  margin-top: 3rem;
+  font-weight: 800;
+}
+  
+@media only screen and (max-width: 600px) {
+  h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0rem;
+    margin-top: 3rem;
+    font-weight: 800;
+  }
+}
+  
+.slick-arrow {
+  background: #555;
+  border-radius: 80%;
+}
+  
+.box-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.box {
+  height: 510px;
+  background-color: #ffffff;
+  font-size: large;
+  border-radius: 10px;
+  box-shadow: 2px 10px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 20px 10px;
+  max-width: 12%;
+  min-width: 5%;
+}
+  
+.box:hover {
+  transform: scale(1.05);
+}
+
+.picture  {
+  width: 100%;
+  height: 15em;
+  padding: 3%;
+  border-radius: 20px;
+}
+
+.details {
+  margin: 10%;
+  justify-content: left;
+}
+  
+img {
+  height: 10em;
+  width: 100%;
+  border-radius: 10px;
+}
+
+a, a:hover {
+  color: #ffa500;
+  text-decoration: none;
+}
+  
+#back-button {
+  display: none;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+#back-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.popup {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.popup-overlay {
+  animation: overlayFadeIn 0.3s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cardo {
+    margin: 5% 18%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .popup {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .popup-header {
+    font-size: 18px;
+  }
+
+  #popup-list li {
+    font-size: 14px;
+  }
+}

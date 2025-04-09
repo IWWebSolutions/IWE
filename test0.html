@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Machinery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .category-container {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .category-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px; 
+        }
+        .category-content {
+            display: flex;
+            gap: 20px;
+        }
+        .left-panel {
+            flex: 1;
+            background: url('images/product/large-size/hand.jpg') center/cover no-repeat;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+            position: relative;
+        }
+        .left-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+            border-radius: 5px;
+        }
+        .left-panel div {
+            position: relative;
+            z-index: 1;
+        }
+        .category-list {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .view-all-btn {
+            background: red;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: bold;
+            width: 120px;
+        }
+        .right-panel {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .sub-category {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sub-category h4 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .sub-category img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .sub-category ul {
+            padding: 0;
+            margin: 10px 0;
+            list-style-type: none;
+        }
+        .sub-category ul li {
+            font-size: 14px;
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="category-container">
+    <div class="category-header">Industrial Machinery</div>
+    <div class="category-content">
+        <!-- Left Side Panel -->
+        <div class="left-panel">
+            <div class="category-list">
+                <div>Pollution Control Machines & Devices</div>
+                <div>Machines and Equipments</div>
+                <div>Conveyors & Conveyor Components</div>
+                <div>Food Processing Machines & Plants</div>
+            </div>
+            <div class="view-all-btn">View All</div>
+        </div>
+
+        <!-- Right Side Grid -->
+        <div class="right-panel">
+            <div class="sub-category">
+                <h4>Food Processing Machines & Plants</h4>
+                <ul>
+                    <li>Beverages Mixes</li>
+                    <li>Kitchen Chopper</li>
+                    <li>Chapati Making Machine</li>
+                    <li>Gravy Machine</li>
+                </ul>
+                <img src="images/product/large-size/hand.jpg" alt="Food Processing">
+            </div>
+            <div class="sub-category">
+                <h4>Grinding & Milling Tools</h4>
+                <ul>
+                    <li>Pulverizers</li>
+                    <li>Ball Mill</li>
+                    <li>Disintegrator</li>
+                    <li>Hammer Mill</li>
+                </ul>
+                <img src="images/product/large-size/hand.jpg" alt="Grinding Tools">
+            </div>
+            <div class="sub-category">
+                <h4>Material Handling Machines</h4>
+                <ul>
+                    <li>Material Handling Equipments</li>
+                    <li>Hydraulic Truck Unloader</li>
+                    <li>Work Tables</li>
+                    <li>Hand Pallet Truck</li>
+                </ul>
+                <img src="images/product/large-size/hand.jpg" alt="Material Handling">
+            </div>
+            <div class="sub-category">
+                <h4>Cutting Machines & Equipment</h4>
+                <ul>
+                    <li>Cutting Machine</li>
+                    <li>Die Cut Machine</li>
+                    <li>Bar Cutting Machine</li>
+                    <li>Plasma Cutting Machine</li>
+                </ul>
+                <img src="images/product/large-size/hand.jpg" alt="Cutting Machines">
+            </div>
+            <div class="sub-category">
+                <h4>Industrial Ovens & Furnaces</h4>
+                <ul>
+                    <li>Furnaces</li>
+                    <li>Chimneys</li>
+                    <li>Vacuum Oven</li>
+                    <li>Industrial Ovens</li>
+                </ul>
+                <img src="images/product/large-size/hand.jpg" alt="Industrial Ovens">
+            </div>
+            <div class="sub-category">
+                <h4>Water Treatment & Purification</h4>
+                <ul>
+                    <li>Water Treatment Plant</li>
+                    <li>Water Softener</li>
+                    <li>Industrial RO Plant</li>
+                </ul>
+                <img src="images/product/large-size/hand.jpg" alt="Water Treatment">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

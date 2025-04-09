@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= realm.name %></title>
+</head>
+<body>
+  <h1><%= realm.name %></h1>
+
+  <!-- Display the list of domains (subcategories) -->
+  <h2>Subcategories:</h2>
+  <ul>
+    <% domainList.forEach(function(domain) { %> 
+      <li>
+        <a href="/domain/<%= domain.slug %>"><%= domain.name %></a>
+      </li>
+    <% }); %> 
+  </ul>
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<div id="head"></div>
+<script src="https://cdn.tiny.cloud/1/6ndzbwm4oqiwnddx1clb5gaz0fcyjobgc4mit34d5c5ez4cc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<style>
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 400px;
+        position: relative;
+    }
+    .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="header"></div> 
+    
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">My Account</li> 
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+        
+    <!-- My Account Start -->
+    <div class="my-account">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab">
+                            <i class="fa fa-tachometer"></i> Dashboard
+                        </a>
+                        <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+                            <i class="fa fa-shopping-bag"></i> Membership Plan
+                        </a>
+                        <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab">
+                            <i class="fa fa-credit-card"></i> Previous Lead Enquiries
+                        </a>
+                        <!--<a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab">
+                            <i class="fa fa-map-marker"></i> Product Enquiry
+                        </a>
+                        <a class="nav-link" id="addprod-nav" data-toggle="pill" href="#addprod-tab" role="tab">
+                            <i class="fa fa-map-marker"></i> Add Product
+                        </a>
+                        <a class="nav-link" id="listprod-nav" data-toggle="pill" href="#listprod-tab" role="tab">
+                            <i class="fa fa-map-marker"></i> Product List
+                        </a>
+                        <a class="nav-link" id="complogo-nav" data-toggle="pill" href="#complogo-tab" role="tab">
+                            <i class="fa fa-map-marker"></i> Company Logo
+                        </a>
+                        <a class="nav-link" id="compban-nav" data-toggle="pill" href="#compban-tab" role="tab">
+                            <i class="fa fa-map-marker"></i> Company Banner
+                        </a>-->
+                        <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab">
+                            <i class="fa fa-user"></i> Account Details
+                        </a>
+                        <a class="nav-link" href="index.html" id="logoutBtn">
+                            <i class="fa fa-sign-out"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
+                            <h4>Hello, <span id="name"></span></h4>
+                            <p>
+                                <br>
+                                From your account dashboard you can view your recent enquiry, manage your account, edit your 
+                                password and account details.
+                            </p> 
+
+                            <!-- Leads Section -->
+                            <section class="product-area li-laptop-product li-trendding-products best-sellers">
+                                <div class="container">
+                                    <div class="row"> 
+                                        <div class="col-lg-12">
+                                            <div class="li-section-title">
+                                                <h2><span>Latest Requirements</span></h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="requirements-slider-area">
+                                                    <div class="requirements-slider">
+                                                        <!-- Leads will be dynamically injected here -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+                            <div id="membership-details" class="membership-container">
+                                <h4>Your Membership</h4>
+                                <p>Loading your membership details...</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
+                            <h4>Previous Lead Enquiries</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>S. No.</th>
+                                            <th>Name</th>
+                                            <th>Email ID</th>
+                                            <th>Mobile No.</th>
+                                            <th>Company</th>
+                                            <th>Product</th>
+                                            <th>City</th>
+                                            <th>Message</th>
+                                            <th>Date & Time</th>
+                                        </tr>
+                                    </thead> 
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Contact Person</td>
+                                            <td>contact@business.com</td>
+                                            <td>+918646329626</td>
+                                            <td>Business</td>
+                                            <td>Turmeric</td>
+                                            <td>Malaysia</td>
+                                            <td>give me turmeric</td> 
+                                            <td>2 Jan 2024 - 01:20 PM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--<div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
+                            <h4>Product Enquiry</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>S. No.</th>
+                                            <th>Name</th>
+                                            <th>Email ID</th>
+                                            <th>Mobile No.</th>
+                                            <th>Company</th>
+                                            <th>Product</th>
+                                            <th>City</th>
+                                            <th>Message</th>
+                                            <th>Date & Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Product Name</td>
+                                            <td>01 Jan 2020</td>
+                                            <td>$99</td>
+                                            <td>Approved</td>
+                                            <td><button class="btn">View</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade ACC" id="addprod-tab" role="tabpanel" aria-labelledby="addprod-nav">
+                            <h4>Add Products</h4>
+                            <div class="row">
+                                <form>
+                                <div class="col-md-6">
+                                    <label>Select Category</label>
+                                    <select id="mainCategory" name="mainCategory" onchange="updateSubCategory()">
+                                        <option value="">--Select Category--</option>
+                                        <option value="Food Products & Beverages">Food Products & Beverages</option>
+                                        <option value="Agriculture">Agriculture</option>
+                                        <option value="Fashion & Apparel">Fashion & Apparel</option>
+                                        <option value="Ayurveda & Herbal">Ayurveda & Herbal</option>
+                                        <option value="Transportation & Logistics">Transportation & Logistics</option>
+                                        <option value="Packaging Material">Packaging Material</option>
+                                        <option value="Machinery & Equipment">Machinery & Equipment</option>
+                                        <option value="Medical Equipment">Medical Equipment</option>
+                                        <option value="Personal Care & Hygiene">Personal Care & Hygiene</option>
+                                        <option value="Safety Products">Safety Products</option>
+                                        <option value="Electronics & Electrical Goods">Electronics & Electrical Goods</option>
+                                        <option value="Handicraft & Gift Items">Handicraft & Gift Items</option>
+                                        <option value="Automobile Tools & Equipments">Automobile Tools & Equipments</option>
+                                        <option value="Chemicals & Dye Products">Chemicals & Dye Products</option>
+                                        <option value="Plastic Products">Plastic Products</option>
+                                        <option value="Furniture & Home Decoration">Furniture & Home Decoration</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Select Sub-Category</label>
+                                    <select id="subCategory" name="subCategory">
+                                        <option value="">--Select Sub-Category--</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Product Name</label>
+                                    <input class="form-control" type="text" placeholder="Enter the Product's Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Price Range</label>
+                                    <input class="form-control" type="text" placeholder="Rs. 100-150 / per product">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Status</label>
+                                    <select id="Type" name="Type">
+                                        <option value="work">Active</option>
+                                        <option value="personal">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Short Description</label>
+                                    <input class="form-control" type="text" placeholder="Enter Short Description">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Description</label>
+                                    <textarea id="longDescription" name="longDescription"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Meta Title</label>
+                                    <input class="form-control" type="text" placeholder="Enter Meta Title">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Meta Keywords</label>
+                                    <input class="form-control" type="text" placeholder="Enter Meta Keywords">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Meta Description</label>
+                                    <input class="form-control" type="text" placeholder="Enter Meta Description">
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="productImages">Upload Images</label>
+                                    <input 
+                                        type="file" 
+                                        id="productImages" 
+                                        name="productImages[]" 
+                                        accept="image/*" 
+                                        multiple 
+                                        class="form-control">
+                                    <small class="form-text text-muted">You can upload multiple images. Accepted formats: JPG, PNG, GIF.</small>
+                                </div>
+                                <BR>
+                                <div id="imagePreview" class="mt-3"></div>
+                                <div class="col-md-12">
+                                    <button class="btn">SUBMIT</button>
+                                    <br><br>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="listprod-tab" role="tabpanel" aria-labelledby="listprod-nav">
+                            <h4>Product List</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>S. No.</th>
+                                            <th>Name</th>
+                                            <th>Image</th>
+                                            <th>Category</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Product Name</td>
+                                            <td>01 Jan 2020</td>
+                                            <td>$99</td>
+                                            <td>Approved</td>
+                                            <td><button class="btn">View</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade ACC" id="complogo-tab" role="tabpanel" aria-labelledby="complogo-nav">
+                            <h4>Add Company Logo</h4>
+                            <div class="row">
+                                <form>
+                                <div class="col-md-12 mb-3">
+                                    <label for="complogo">Company Logo</label>
+                                    <input 
+                                        type="file" 
+                                        id="productImages" 
+                                        name="productImages[]" 
+                                        accept="image/*" 
+                                        multiple 
+                                        class="form-control">
+                                    <small class="form-text text-muted">Accepted formats: JPG, PNG, GIF.</small>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn">SUBMIT</button>
+                                    <br><br>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade ACC" id="compban-tab" role="tabpanel" aria-labelledby="compban-nav">
+                            <h4>Add Company Banner</h4>
+                            <div class="row">
+                                <form>
+                                <div class="col-md-12 mb-3">
+                                    <label for="compban">Company Banner</label>
+                                    <input 
+                                        type="file" 
+                                        id="productImages" 
+                                        name="productImages[]" 
+                                        accept="image/*" 
+                                        multiple 
+                                        class="form-control">
+                                    <small class="form-text text-muted">Accepted formats: JPG, PNG, GIF.</small>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn">SUBMIT</button>
+                                    <br><br>
+                                </div>
+                                </form>
+                            </div>
+                        </div>-->
+                        <div class="tab-pane fade ACC" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                            <h4>Account Details</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                    <input class="form-control" type="text" id="name" name="name" placeholder="Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Mobile Number</label>
+                                    <input class="form-control" type="text" id="phone_no" name="phone_no"  placeholder="Mobile">
+                                </div><br>
+                                <div class="col-md-6">
+                                    <label>Company Name</label>
+                                    <input class="form-control" type="text" id="company_name" name="company_name"  placeholder="Company">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Business Type</label>
+                                    <select id="business_type" name="business_type">
+                                        <option value="work">--Select--</option>
+                                        <option value="personal">All</option>
+                                        <option value="other">Exporter</option>
+                                        <option value="other">Supplier</option>
+                                        <option value="other">Manufacturer</option>
+                                        <option value="other">Retailer</option>
+                                        <option value="other">Distributor</option>
+                                        <option value="other">Importer</option>
+                                        <option value="other">Trader</option>
+                                        <option value="other">Whole-seller</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Company Website</label>
+                                    <input class="form-control" type="text" id="company_website" name="company_website"  placeholder="Company Website"> 
+                                </div><br>
+                                <div class="col-md-6">
+                                    <label>Country</label>
+                                    <input class="form-control" type="text" id="country_name" name="country_name" placeholder="Company">
+                                </div>
+                                <div class="col-md-6">
+                                    <label> State</label>
+                                    <input class="form-control" type="text" id="state" name="state"  placeholder="Company">
+                                </div>
+                                <div class="col-md-6">
+                                    <label> City</label>
+                                    <input class="form-control" type="text" id="city" name="city"  placeholder="City">
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label>Address</label>
+                                    <input class="form-control" type="text" id="address" name="address"  placeholder="Company">
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label>Company Services</label>
+                                    <input class="form-control" type="text" id="services" name="services"  placeholder="Company Services">
+                                </div><br>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn">Update Account</button>
+                                    <br><br>
+                                </div>
+                            </div>
+                            <h4>Password change</h4>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <input class="form-control" type="password" placeholder="Current Password">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input class="form-control" type="text" placeholder="New Password">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input class="form-control" type="text" placeholder="Confirm Password">
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- My Account End -->
+
+    <div id="popupForm" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <h2>Lead Details</h2>
+            <p><strong>Product:</strong> <span id="popupProduct"></span></p>
+            <p><strong>Quantity:</strong> <span id="popupQuantity"></span></p>
+            <p><strong>Company Name:</strong> <span id="popupCompanyName"></span></p>
+            <p><strong>Company Email:</strong> <span id="popupCompanyEmail"></span></p>
+            <p><strong>Phone Number:</strong> <span id="popupPhone"></span></p>
+            <p><strong>Country:</strong> <span id="popupCountry"></span></p>
+        </div>
+    </div>
+        
+    <div id="footer"></div>     
+        
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+    
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const popup = document.getElementById("popupForm");
+            const closePopup = document.querySelector(".close-popup");
+
+            // Function to open the popup
+            function openPopup() {
+                popup.style.display = "block";
+            }
+
+            // Function to close the popup
+            closePopup.addEventListener("click", function () {
+                popup.style.display = "none";
+            });
+
+            // Close the popup when clicking outside the form
+            window.addEventListener("click", function (event) {
+                if (event.target === popup) {
+                    popup.style.display = "none";
+                }
+            });
+
+            // Add event listener to open popup when clicking a button
+            document.querySelectorAll(".view-lead").forEach(button => {
+                button.addEventListener("click", openPopup);
+            });
+
+            // Handle form submission
+            document.getElementById("popupFormContent").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Collect form data
+                const formData = {
+                    product: document.getElementById("popupProduct").value,
+                    quantity: document.getElementById("popupQuantity").value,
+                    company_name: document.getElementById("popupCompanyName").value,
+                    company_email: document.getElementById("popupCompanyEmail").value,
+                    phone_number: document.getElementById("popupPhone").value,
+                    country_name: document.getElementById("popupCountry").value,
+                };
+
+                console.log("Form Data Submitted:", formData);
+
+                // Example: Send form data via fetch to backend API (adjust URL)
+                fetch("/api/submit-lead/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Your request has been submitted!");
+                    popup.style.display = "none"; // Close popup after submission
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        });
+
+    </script>
+
+    <script>
+        // Retrieve user details from localStorage
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user)
+
+        if (user) {
+            document.getElementById("name").textContent = user.name;
+            document.getElementById("email").textContent = user.email;
+            document.getElementById("phone_no").textContent = user.phone_no;
+            document.getElementById("company_name").textContent = user.company_name;
+            document.getElementById("business_type").textContent = user.business_type;
+            document.getElementById("company_website").textContent = user.company_website;
+            document.getElementById("state").textContent = user.state;
+            document.getElementById("city").textContent = user.city;
+            document.getElementById("address").textContent = user.address;
+            document.getElementById("services").textContent = user.company_services;
+        } else {
+            // Redirect to login if no user is found
+            window.location.href = "http://127.0.0.1:5501/login.html";
+        }
+
+        // Logout functionality
+        document.getElementById("logoutBtn").addEventListener("click", function() {
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("user");
+            window.location.href = "http://127.0.0.1:5501/login.html";
+        });
+    </script>
+    <script src="js/account.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load head content
+            fetch('head.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Head file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('head').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading head:', error));
+    
+            // Load header content
+            fetch('header.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Header file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading header:', error));
+    
+            // Load footer content
+            fetch('footer.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Footer file not found');
+                    return res.text();
+                })
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Change href dynamically for .redirect links
+            document.querySelectorAll(".redirect").forEach(link => {
+                link.setAttribute("href", "maintenance.html");
+
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.href = "maintenance.html";
+                });
+            });
+
+            // Change href dynamically for .soon links
+            document.querySelectorAll(".soon").forEach(link => {
+                link.setAttribute("href", "coming-soon.html");
+
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    window.location.href = "coming-soon.html";
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // dashboard.js
+        // Function to get user profile data
+        const getUserProfile = async () => {
+            const accessToken = localStorage.getItem('access_token');
+
+            if (!accessToken) {
+                window.location.href = '/login';  // Redirect to login if no token is found
+                return;
+            }
+
+            try {
+                const response = await fetch('/profile/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                    }
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Pre-fill the form with the fetched data
+                    document.getElementById('name').value = data.name;
+                    document.getElementById('email').value = data.email;
+                    document.getElementById('phone').value = data.phone;
+                    // Fill other form fields as needed
+                } else {
+                    console.log('Failed to fetch profile:', data.msg);
+                }
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+            }
+        };
+        // Call this function when the dashboard is loaded
+        window.onload = getUserProfile;
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const logoutBtn = document.getElementById("logoutBtn");
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", function() {
+                    const refreshToken = localStorage.getItem("refresh_token");
+
+                    if (!refreshToken) {
+                        console.error("No refresh token found, redirecting...");
+                        localStorage.clear();
+                        window.location.href = "http://127.0.0.1:5501/login.html"; // Redirect to login page
+                        return;
+                    }
+
+                    fetch("http://127.0.0.1:8000/logout/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${localStorage.getItem("access_token")}`
+                        },
+                        body: JSON.stringify({ refresh_token: refreshToken })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.msg);
+                        localStorage.clear(); // Clear all stored tokens
+                        window.location.href = "http://127.0.0.1:5501/login.html"; // Redirect to login page
+                    })
+                    .catch(error => {
+                        console.error("Logout failed:", error);
+                        localStorage.clear(); // Clear storage even if API fails
+                        window.location.href = "http://127.0.0.1:5501/login.html"; 
+                    });
+                });
+            }
+        });
+    </script>
+    <!-- There are leads of vieww -->
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+            fetch("http://127.0.0.1:8000/get_leads/")  // Fetch leads from your backend
+                .then(response => response.json())
+                .then(data => {
+                    const slider = document.querySelector(".requirements-slider");
+                    slider.innerHTML = ""; // Clear existing items
+
+                    data.forEach(lead => {
+                        const item = document.createElement("div");
+                        item.classList.add("requirement-item");
+                        item.innerHTML = `
+                            <div class="requirement-header">
+                                <h4>${lead.products}</h4>
+                            </div>
+                            <div class="requirement-info">
+                                <span><strong>Country:</strong> ${lead.country}</span>
+                                <span><strong>Phone:</strong> ${lead.phone_no}</span>
+                            </div>
+                            <div class="requirement-company">
+                                <span><strong>Company:</strong> ${lead.company_name}</span>
+                                <span><strong>Email:</strong> ${lead.company_email}</span>
+                            </div>
+                            <div class="requirement-company">
+                                <span><strong>Quantity:</strong> ${lead.quantity}</span>
+                                <button class="view-lead" data-id="${lead.id}" 
+                                        data-product="${lead.products}" 
+                                        data-quantity="${lead.quantity}" 
+                                        data-company="${lead.company_name}" 
+                                        data-email="${lead.company_email}" 
+                                        data-phone="${lead.phone_no}" 
+                                        data-country="${lead.country}">
+                                    View Lead
+                                </button>
+                            </div>
+                        `;
+                        slider.appendChild(item);
+                    });
+
+                    // ✅ Event delegation for dynamically added buttons
+                    document.body.addEventListener("click", function (event) {
+                        if (event.target.classList.contains("view-lead")) {
+                            const button = event.target;
+
+                            // Fill popup with selected lead details
+                            document.getElementById("popupProduct").textContent = button.dataset.product;
+                            document.getElementById("popupQuantity").textContent = button.dataset.quantity;
+                            document.getElementById("popupCompanyName").textContent = button.dataset.company;
+                            document.getElementById("popupCompanyEmail").textContent = button.dataset.email;
+                            document.getElementById("popupPhone").textContent = button.dataset.phone;
+                            document.getElementById("popupCountry").textContent = button.dataset.country;
+
+                            // Show the popup
+                            document.getElementById("popupForm").style.display = "block";
+                        }
+                    });
+
+                    // Close popup when clicking outside
+                    document.getElementById("closePopup").addEventListener("click", function () {
+                        document.getElementById("popupForm").style.display = "none";
+                    });
+                })
+            .catch(error => console.error("Error fetching leads:", error));
+        });
+
+    </script>
+    <!-- <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("http://127.0.0.1:8000/get_leads/")  // Fetch masked leads
+                .then(response => response.json())
+                .then(data => {
+                    const slider = document.querySelector(".requirements-slider");
+                    slider.innerHTML = ""; // Clear existing items
+
+                    data.forEach(lead => {
+                        const item = document.createElement("div");
+                        item.classList.add("requirement-item");
+                        item.innerHTML = `
+                            <div class="requirement-header">
+                                <h4>${lead.products}</h4>
+                            </div>
+                            <div class="requirement-info">
+                                <span><strong>Country:</strong> ${lead.country}</span>
+                                <span><strong>Phone:</strong> <span class="lead-phone">XXXXXXXXXX</span></span>  
+                            </div>
+                            <div class="requirement-company">
+                                <span><strong>Company:</strong> <span class="lead-company">XXXXXXXX</span></span>  
+                                <span><strong>Email:</strong> <span class="lead-email">XXXXXXXXXX</span></span>  
+                            </div>
+                            <div class="requirement-company">
+                                <span><strong>Quantity:</strong> ${lead.quantity}</span>
+                                <button class="view-lead" data-id="${lead.id}">View Lead</button>
+                            </div>
+                        `;
+                        slider.appendChild(item);
+                    });
+
+                    // ✅ Handle "View Lead" clicks dynamically
+                    document.body.addEventListener("click", function (event) {
+                        if (event.target.classList.contains("view-lead")) {
+                            const button = event.target;
+                            const leadId = button.dataset.id;
+                            const parentItem = button.closest(".requirement-item");
+
+                            fetch(`http://127.0.0.1:8000/lead-details/${leadId}/`)
+                                .then(response => response.json())
+                                .then(leadData => {
+                                    if (leadData.error) {
+                                        alert(leadData.error);  // Show limit reached message
+                                    } else {
+                                        // ✅ Update UI with real lead details
+                                        parentItem.querySelector(".lead-phone").textContent = leadData.phone_no;
+                                        parentItem.querySelector(".lead-company").textContent = leadData.company_name;
+                                        parentItem.querySelector(".lead-email").textContent = leadData.company_email;
+                                        button.remove();  // Remove "View Lead" button after showing details
+                                    }
+                                })
+                                .catch(error => console.error("Error fetching lead details:", error));
+                        }
+                    });
+                })
+            .catch(error => console.error("Error fetching leads:", error));
+        });
+
+        fetch("http://127.0.0.1:8000/api/login/", {
+            method: "POST",
+            body: JSON.stringify({ username, password }),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                localStorage.setItem("authToken", data.token);  // Store token
+                window.location.href = "/dashboard/";
+            } else {
+                alert("Invalid credentials");
+            }
+        });
+    </script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const authToken = localStorage.getItem("authToken");
+            const slider = document.querySelector(".requirements-slider");
+            let accessedLeads = JSON.parse(localStorage.getItem("accessedLeads")) || [];  // Track weekly viewed leads
+
+            // ✅ Ensure scrolling always works
+            slider.style.overflowY = "scroll";
+            slider.style.maxHeight = "400px";
+
+            // ✅ Fetch Leads and Populate UI
+            fetch("http://127.0.0.1:8000/get_leads/", {
+                headers: { "Authorization": `Bearer ${authToken}` }
+            })
+            .then(response => response.json())
+            .then(data => {
+                slider.innerHTML = "";  // Clear old leads
+
+                data.forEach(lead => {
+                    const item = document.createElement("div");
+                    item.classList.add("requirement-item");
+                    item.innerHTML = `
+                        <div class="requirement-header">
+                            <h4>${lead.products}</h4>
+                        </div>
+                        <div class="requirement-info">
+                            <span><strong>Country:</strong> ${lead.country}</span>
+                            <span><strong>Phone:</strong> <span class="lead-phone">XXXXXXXXXX</span></span>  
+                        </div>
+                        <div class="requirement-company">
+                            <span><strong>Company:</strong> <span class="lead-company">XXXXXXXX</span></span>  
+                            <span><strong>Email:</strong> <span class="lead-email">XXXXXXXXXX</span></span>  
+                        </div>
+                        <div class="requirement-company">
+                            <span><strong>Quantity:</strong> ${lead.quantity}</span>
+                            <button class="view-lead" data-id="${lead.id}">View Lead</button>
+                        </div>
+                    `;
+                    slider.appendChild(item);
+                });
+
+                // ✅ Reattach event listeners for View Lead buttons
+                document.querySelectorAll(".view-lead").forEach(button => {
+                    button.addEventListener("click", function () {
+                        handleViewLead(button);
+                    });
+                });
+            })
+            .catch(error => console.error("Error fetching leads:", error));
+        });
+
+        // ✅ Function to Handle "View Lead" Button Click
+        function handleViewLead(button) {
+            const authToken = localStorage.getItem("authToken");
+            let accessedLeads = JSON.parse(localStorage.getItem("accessedLeads")) || [];
+            const leadId = button.dataset.id;
+            const parentItem = button.closest(".requirement-item");
+
+            // ✅ Prevent users from viewing more than 2 leads per week
+            if (accessedLeads.length >= 2) {
+                alert("You have reached your weekly limit of 2 leads.");
+                return;
+            }
+
+            fetch(`http://127.0.0.1:8000/lead-details/${leadId}/`, {
+                headers: { "Authorization": `Bearer ${authToken}` }
+            })
+            .then(response => response.json())
+            .then(leadData => {
+                if (leadData.error) {
+                    alert(leadData.error);
+                } else {
+                    // ✅ Update UI with actual decrypted data
+                    parentItem.querySelector(".lead-phone").textContent = decryptData(leadData.phone_no);
+                    parentItem.querySelector(".lead-company").textContent = decryptData(leadData.company_name);
+                    parentItem.querySelector(".lead-email").textContent = decryptData(leadData.company_email);
+
+                    accessedLeads.push(leadId);  // Store accessed lead
+                    localStorage.setItem("accessedLeads", JSON.stringify(accessedLeads));
+
+                    button.remove();  // Remove "View Lead" button after viewing
+                }
+            })
+            .catch(error => console.error("Error fetching lead details:", error));
+        }
+
+        // ✅ Simple decryption function (Adjust based on encryption method)
+        function decryptData(encryptedText) {
+            return atob(encryptedText);  // Example: Base64 decoding
+        }
+
+    </script> -->
+
+</body>
+</html>

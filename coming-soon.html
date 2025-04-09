@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        /* General Reset */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        }
+
+        /* Container Styling */
+        .container {
+        text-align: center;
+        max-width: 800px;
+        padding: 20px;
+        }
+
+        /* Animation Container */
+        .animation {
+        width: 400px; /* Increased size */
+        height: 400px; /* Increased size */
+        margin: -50px auto 0; /* Move it up by 50px */
+        }
+
+        /* Animated Text */
+        .animated-text {
+        font-size: 4rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        }
+
+        /* Subtext Styling */
+        .subtext {
+        font-size: 1.2rem;
+        margin: 20px 0;
+        color: #e0e0e0;
+        animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+
+        /* Social Links Styling */
+        .social-links {
+        margin-top: 30px;
+        }
+
+        .social-links a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1rem;
+        padding: 10px 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #fff;
+        transform: scale(1.1);
+        }
+    </style>
+    <!-- Lottie Animation Library -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Lottie Animation -->
+        <div class="animation">
+            <lottie-player
+                src="https://assets10.lottiefiles.com/packages/lf20_soCRuE.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay>
+            </lottie-player>
+        </div>
+        <h1 class="animated-text">Coming Soon</h1>
+        <p class="subtext">We're crafting something extraordinary for you. Stay tuned!</p>
+        <!-- Social Links (Optional) -->
+        <div class="social-links">
+            <a href="index.html" target="_blank">Go to Home Page</a>
+            <a href="contact.html" target="_blank">Contact Us</a>
+            <a href="https://iwwebsolutions.com/" target="_blank">Visit Other Business Ventures</a>
+        </div>
+    </div>
+</body>
+</html>

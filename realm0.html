@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+</head>
+<body>
+    <h1>Realms</h1>
+    <ul id="realms"></ul>
+
+    <script type="module">
+        import { fetchRealms } from './graphql-categories/fetch.js';
+
+        async function renderRealms() {
+            const realms = await fetchRealms();
+            console.log('Fetched Realms:', realms); // Log the fetched realms
+
+            const realmsList = document.getElementById('realms');
+
+            if (realms.length === 0) {
+                realmsList.innerHTML = '<li>No realms found</li>';
+                return;
+            }
+
+            realms.forEach(realm => {
+                const realmItem = document.createElement('li');
+                realmItem.textContent = realm.name;
+                realmsList.appendChild(realmItem);
+
+                const domainsList = document.createElement('ul');
+                realmItem.appendChild(domainsList);
+
+                realm.domains.forEach(domain => {
+                    const domainItem = document.createElement('li');
+                    domainItem.textContent = domain.name;
+                    domainsList.appendChild(domainItem);
+
+                    const nichesList = document.createElement('ul');
+                    domainItem.appendChild(nichesList);
+
+                    domain.niches.forEach(niche => {
+                        const nicheItem = document.createElement('li');
+                        nicheItem.textContent = niche.name;
+                        nichesList.appendChild(nicheItem);
+                    });
+                });
+            });
+        }
+
+        renderRealms();
+    </script>
+</body>
+</html>
